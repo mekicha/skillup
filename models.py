@@ -18,21 +18,21 @@ class Post(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(140))
   body = db.Column(db.Text)
-  created_at = db.Column(db.Datetime)
-  updated_at = db.Column(db.Datetime, default=Date.now())
+  created_at = db.Column(db.DateTime)
+  updated_at = db.Column(db.DateTime, default=datetime.utcnow())
   author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
   author = db.relationship('User', backref=db.backref('posts', lazy='dynamic'))
   tag_id = db.Column(db.Integer, db.ForeignKey('tag.id'))
   tag = db.relationship('Tag', backref=db.backref('posts', lazy='dynamic'))
   
-  def __init__(self, title, body, author, created_at=None, updated_at=None):
+  def __init__(self, title, body, author,tag, created_at=None):
     self.title = title
     self.body = body
     if created_at is None:
       created_at = datetime.utcnow()
     self.created_at = created_at
-    self.updated_at = datetime.utcnow()
     self.author = author 
+    self.tag = tag 
 
   def __repr__(self):
     return '<Post %r>' % self.title 
