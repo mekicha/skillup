@@ -29,9 +29,9 @@ def logout():
   return redirect(url_for('index'))
 
 @app.route('/register', methods=['GET', 'POST'])
-def register:
+def register():
   pass 
-  
+
 
 app.secret_key = '\x16Y\xe7\x97\x0e\x84n\ntH\xa3\x107I3kE\xa0\xc8\xaayFYz'
 

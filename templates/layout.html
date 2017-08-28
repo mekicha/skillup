@@ -11,11 +11,10 @@
     <h1><span>{{ self.title() }}</span></h1>
   {% endblock %}
   <p class=nav>
-    <a href="{{ url_for('general.index') }}">overview</a> //
-    <a href="{{ url_for('docs.index') }}">docs</a> //
-    <a href="{{ url_for('community.index') }}">community</a> //
-    <a href="{{ url_for('snippets.index') }}">snippets</a> //
-    <a href="{{ url_for('extensions.index') }}">extensions</a>
+    <a href="{{ url_for('index') }}">Home</a> //
+    <a href="{{ url_for('login') }}">Login</a> //
+    <a href="{{ url_for('register') }}">Register</a> //
+
   {% for message in get_flashed_messages() %}
     <p class=message>{{ message }}
   {% endfor %}
