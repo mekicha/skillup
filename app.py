@@ -3,7 +3,6 @@ from flask import request
 from flask import abort,redirect, url_for
 from flask import render_template
 from flask import g
-import sqlite3
 from flask_sqlalchemy import SQLAlchemy 
 
 app = Flask(__name__)
@@ -14,8 +13,8 @@ db = SQLAlchemy(app)
 from models import User, Post, Tag 
 
 @app.route('/')
-def hello():
-  return 'Hello world'
+def index():
+  return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -28,6 +27,11 @@ def login():
 def logout():
   session.pop('username', None)
   return redirect(url_for('index'))
+
+@app.route('/register', methods=['GET', 'POST'])
+def register:
+  pass 
+  
 
 app.secret_key = '\x16Y\xe7\x97\x0e\x84n\ntH\xa3\x107I3kE\xa0\xc8\xaayFYz'
 
